@@ -19,8 +19,6 @@ class AmericaLineTest(TestCase):
         self.assertEqual(user.name, "marcelo")
         self.assertEqual(user.password, "password")
         self.assertEqual(user.email, "marceloarthurb@gmail.com")
-    def test_model_delete(self):
-        user = User.objects.first()
-        self.assertEqual(user.name, null)
+    
 
         
