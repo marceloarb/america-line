@@ -1,14 +1,14 @@
 from django.test import TestCase, Client
-from .models import *
+import pytest
+from america_app.models import User
 
 class AmericaLineTest(TestCase):
     @classmethod
-    def setUpTestData(cls):
+    def setUpTestData(self):
         User.objects.create(
             name = "marcelo",
             password = "password", 
-            email = "marceloarthurb@gmail.com",
-
+            email = "marceloarthurb@gmail.com"
         )
     def test_API_login_page(self):
         client = Client()
