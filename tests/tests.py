@@ -19,15 +19,7 @@ class AmericaLineTest(TestCase):
         self.assertEqual(user.name, "marcelo")
         self.assertEqual(user.password, "password")
         self.assertEqual(user.email, "marceloarthurb@gmail.com")
-    def test_model_update(self):
-        user = User.objects.update(
-            name = "m",
-            password = "p", 
-            email = "m@gmail.com"
-        )
-        self.assertEqual(user.name, "m")
-        self.assertEqual(user.password, "p")
-        self.assertEqual(user.email, "m@gmail.com")
+    
         
     
 

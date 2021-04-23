@@ -17,6 +17,9 @@
         python manage.py migrate
 ## * Run server
         python manage.py runserver
+## * Run pytest
+        python -m pytest
+
 
 ## The app is running on http://localhost:8000/
 
