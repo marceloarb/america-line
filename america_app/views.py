@@ -4,6 +4,8 @@ from django.contrib import messages
 import bcrypt
 import requests, json
 
+
+apikey = "58beb94f"
 def index_login(request):
 
     return render(request,'login.html')
@@ -40,7 +42,6 @@ def login(request):
 
 def homepage(request):
     if 'user_id'  in request.session :
-        apikey = "58beb94f"
         ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
         movies = []
         for id in ids:
@@ -98,7 +99,6 @@ def view_favs(request):
     if 'user_id' in request.session:
         user = User.objects.get(id=request.session['user_id'])
         favs = []
-        apikey = "58beb94f"
         for movie in user.movies.all():
             r = requests.get("http://www.omdbapi.com/?apikey="+apikey+"&i="+movie.favorite_id+"")
             r = json.loads(r.text)
@@ -131,7 +131,6 @@ def remove_favorite_homepage(request):
 
 def new_release(request):
     if 'user_id' in request.session:
-        apikey = "58beb94f"
         ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
         movies = []
         for id in ids:
@@ -161,7 +160,6 @@ def new_release(request):
 
 def action(request):
     if 'user_id' in request.session:
-        apikey = "58beb94f"
         ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
         movies = []
         for id in ids:
@@ -191,7 +189,6 @@ def action(request):
 
 def drama(request):
     if 'user_id' in request.session:
-        apikey = "58beb94f"
         ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
         movies = []
         for id in ids:
@@ -221,7 +218,6 @@ def drama(request):
 
 def comedy(request):
     if 'user_id' in request.session:
-        apikey = "58beb94f"
         ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
         movies = []
         for id in ids:

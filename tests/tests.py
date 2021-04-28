@@ -20,5 +20,7 @@ class AmericaLineTest(TestCase):
         self.assertEqual(user.password, "password")
         self.assertEqual(user.email, "marceloarthurb@gmail.com")
     
+        
+    
 
         
