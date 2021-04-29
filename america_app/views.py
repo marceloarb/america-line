@@ -19,7 +19,7 @@ def create_user(request):
         else:
             print("User's password entered was " + request.POST['password'])
             hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode() 
-            user = User.objects.create(name=request.POST['name'],email=request.POST['email'], password=hashed_pw, date=request.POST['date'])
+            user = User.objects.create(name=request.POST['name'],email=request.POST['email'], password=hashed_pw)
             print("User's password has been changed to " + user.password)
             
     return redirect('/')
