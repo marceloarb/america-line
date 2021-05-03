@@ -24,7 +24,7 @@ class AmericaLineTest(TestCase):
         self.assertEqual(response.status_code, 302)
     def test_API_register(self):
         client = Client()
-        response = client.post('http://localhost:8000/register', 
+        response = client.post('http://localhost:8000/register',
         json={
             'name':'Barbosa',
             'email': 'junio@python.com',
@@ -33,6 +33,7 @@ class AmericaLineTest(TestCase):
         }
         )
         assert response.status_code == 200
+
     def test_model_create(self):
         user = User.objects.first()
         self.assertEqual(user.name, "marcelo")
