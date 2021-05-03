@@ -33,12 +33,24 @@ class AmericaLineTest(TestCase):
         }
         )
         assert response.status_code == 200
-
-    def test_model_create(self):
+    def test_model_created(self):
         user = User.objects.first()
         self.assertEqual(user.name, "marcelo")
         self.assertEqual(user.password, "password")
         self.assertEqual(user.email, "marceloarthurb@gmail.com")
+
+    def test_model_register(self):
+        client = Client()
+        login = client.post('http://localhost:8000/login',
+        json={
+            'email': 'marceloarthurb@gmail.com',
+            'password':'marceloarthur'
+        })
+        homepage = client.get('http://localhost:8000/homepage')
+        assert homepage.status_code == 200
+
+        
+
 
     
         
