@@ -3,6 +3,7 @@ from .models import User,Movie
 from django.contrib import messages
 import bcrypt
 import requests, json
+from .api.api_omdb import get_api
 
 
 apikey = "58beb94f"
@@ -131,18 +132,7 @@ def remove_favorite_homepage(request):
 
 def new_release(request):
     if 'user_id' in request.session:
-        ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
-        movies = []
-        for id in ids:
-            r = requests.get("http://www.omdbapi.com/?apikey="+apikey+"&i="+id+"")
-            r = json.loads(r.text)
-            info = {
-                'title': r['Title'],
-                'year': r['Year'],
-                'image': r['Poster'],
-                'id': r['imdbID'],
-            }
-            movies.append(info)
+        movies = get_api()
         favorite_ids = []
         user = User.objects.get(id=request.session['user_id'])
         for movie in user.movies.all():
@@ -160,19 +150,7 @@ def new_release(request):
 
 def action(request):
     if 'user_id' in request.session:
-        ids = ['tt0944835','tt0848228','tt3076658','tt1502397','tt6450804','tt0120802','tt0328107','tt0118799','tt0069197','tt7975244','tt1067224','tt7286456','tt2024469','tt1895587']
-        movies = []
-        for id in ids:
-            r = requests.get("http://www.omdbapi.com/?apikey="+apikey+"&i="+id+"")
-            r = json.loads(r.text)
-            info = {
-                'title': r['Title'],
-                'year': r['Year'],
-                'image': r['Poster'],
-                'id': r['imdbID'],
-                'genre': r['Genre'],
-            }
-            movies.append(info)
+        movies = get_api()
         favorite_ids = []
         user = User.objects.get(id=request.session['user_id'])
         for movie in user.movies.all():
