@@ -58,7 +58,7 @@
                     <form action="/add_favorite" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="movie_id" value="{{movie.id}}">
-                        <input class="btn btn-primary" type="submit" value="Add to favorite" ">
+                        <input class="btn btn-primary" type="submit" value="Add to favorite" >
                     </form>
                     {% else %}
                     <form action="/remove_favorite_homepage" method="POST">
